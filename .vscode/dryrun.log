@@ -1,0 +1,8 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/selvinguez/Documentos/Proyecto'
+flex -o proyect_lexer.cpp proyect.l
+g++ --std=c++11 -g -c -o proyect_lexer.o proyect_lexer.cpp
+g++ --std=c++11 -g -c -o main.o main.cpp
+g++ --std=c++11 -g -o proyect proyect_lexer.o main.o
+make: Leaving directory '/home/selvinguez/Documentos/Proyecto'
+ 
