@@ -15,3 +15,54 @@ hola
 445
 for
 do
+-- ! :
+console.log()
++ += &= && == != ( ) - -= |= || < <= [ ] * ^ *= ^= > >= { } / /= ++ = := , ; % %= -- ! :
+const user = {
+  name: "Hayes",
+  id: 0,
+};
+let helloWorld = "Hello World";
+function logPoint(p: Point) {
+
+}
+void LogType() {
+    console.log(helloWorld);
+}
+const calculateValue = (number: number): number => {
+    if (number < 1) { 
+        return 0; 
+    } 
+    let a = 0;
+    let b = 1; 
+    for (let i = 1; i < number; ++i) { 
+        const c = a + b; 
+        a = b; 
+        b = c; 
+    } 
+    return b; 
+}; 
+// Usage example: 
+for (let n = 0; n < 10; ++n) { 
+    const value = calculateValue(n); 
+    console.log("f(" + n + ")=" + value); 
+} 
+
+var numl:number = 10 
+var num2:number = 2 
+var res:number = 0 
+
+res = numl + num2 
+console.log("Sum: "+res): 
+res = numl - num2;
+console.log("Difference: "+res) 
+res = numl*num2 
+console.log("Product: "+res) 
+res = numl/num2 
+console.log("Quotient: "+res)I 
+res = numl%num2 
+console.log("Remainder: "+res) 
+numl++ 
+console.log("Value of numl after increment "+numl) 
+num2-- 
+console.log("Value of num2 after decrement "+num2) 

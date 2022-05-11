@@ -61,9 +61,14 @@
         TK_PORCENTAJE = 311,
         TK_PORCENTAJEIGUAL = 312,
         TK_MENOSMENOS = 313,
-        TK_EXCLAMACIONDOSPUNTOS = 314,
-        TK_LIT_STRING = 315
-        
+        TK_EXCLAMACION = 314,
+        TK_LIT_STRING = 315,
+        TK_DOSPUNTOS = 316,
+        TK_IMPORT = 317,
+        TK_FROM = 318,
+        TK_PRINT = 319,
+        TK_FUNCTION = 320,
+        TK_ARROWFUNC = 321
     };
   
     extern char* yylval;
@@ -78,6 +83,7 @@ IDENTIFICADOR [A-Za-z][A-Za-z0-9]*
 "/*" {BEGIN(comment);}
 "//" {BEGIN(comment2);}
 \".*\" { printf("Token %s",yytext);return TK_LIT_STRING; }
+\'.*\' { printf("Token %s",yytext);return TK_LIT_STRING; }
 "number" {printf("Token %s",yytext);return TK_NUMBER;}
 "boolean" {printf("Token %s",yytext);return TK_BOOLEAN;}
 "string" {printf("Token %s",yytext);return TK_STRING ;}
@@ -98,6 +104,10 @@ IDENTIFICADOR [A-Za-z][A-Za-z0-9]*
 "let" { printf("Token %s",yytext);return TK_LET;}
 "of" { printf("Token %s",yytext);return TK_OF;}
 "continue" {printf("Token %s",yytext); return TK_CONTINUE;}
+"import" { printf("Token %s",yytext);return TK_IMPORT;}
+"from" {printf("Token %s",yytext); return TK_FROM;}
+"console.log" {printf("Token %s",yytext); return TK_PRINT;}
+"function" {printf("Token %s",yytext); return TK_FUNCTION;}
 [0-9]+ { yylval = strdup(yytext);printf("Token %s",yytext); return TK_NUMBERR;}
 {IDENTIFICADOR} { printf("Token %s",yytext); yylval = strdup( yytext); return TK_IDENTIFICADOR; }
 
@@ -131,11 +141,13 @@ IDENTIFICADOR [A-Za-z][A-Za-z0-9]*
 "=" {printf("Token %s",yytext);return TK_IGUAL;}
 ":=" {printf("Token %s",yytext);return TK_DOSPUNTOSIGUAL;}
 "," {printf("Token %s",yytext);return TK_COMMA;}
-";" {return TK_PUNTOCOMMA;}printf("Token %s",yytext);
+";" {printf("Token %s",yytext);return TK_PUNTOCOMMA;}
 "%" {printf("Token %s",yytext);return TK_PORCENTAJE;}
 "%=" {printf("Token %s",yytext);return TK_PORCENTAJEIGUAL;}
 "--" {printf("Token %s",yytext);return TK_MENOSMENOS;}
-"!:" {printf("Token %s",yytext);return TK_EXCLAMACIONDOSPUNTOS;}
+"!" {printf("Token %s",yytext);return TK_EXCLAMACION;}
+":" {printf("Token %s",yytext);return TK_DOSPUNTOS;}
+"=>" {printf("Token %s",yytext);return TK_ARROWFUNC;}
 
 
 
