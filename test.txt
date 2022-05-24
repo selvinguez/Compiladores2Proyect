@@ -1,6 +1,6 @@
 var x:number;
 
-if(x<20){
+if(x<20 && x>20){
   continue;
 }else{
   break;

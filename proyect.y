@@ -43,7 +43,7 @@ type: TK_NUMBER
     | TK_STRING
     ;
 
-statements:
+statements: %empty
     | statements statement
     ;
 
@@ -74,7 +74,7 @@ break_stmt: TK_BREAK TK_PUNTOCOMMA
 continue_stmt: TK_CONTINUE TK_PUNTOCOMMA
     ;    
 
-primary_expression: '(' expression ')' 
+primary_expression: TK_ABREP expression TK_CIERRAP 
     | TK_IDENTIFICADOR
     | constant 
     | TK_LIT_STRING 
@@ -85,15 +85,15 @@ assignment_expression: unary_expression assignment_operator assignment_expressio
                      ;
 
 postfix_expression: primary_expression 
-                    | postfix_expression '[' expression ']'
-                    | postfix_expression '(' ')' 
-                    | postfix_expression '(' argument_expression_list ')' 
+                    | postfix_expression TK_ABREC expression TK_CIERRAC
+                    | postfix_expression TK_ABREP TK_CIERRAP 
+                    | postfix_expression TK_ABREP argument_expression_list TK_CIERRAP 
                     | postfix_expression TK_MASMAS 
                     | postfix_expression TK_MENOSMENOS 
                     ;
 
 
-argument_expression_list: argument_expression_list ',' assignment_expression 
+argument_expression_list: argument_expression_list TK_COMMA assignment_expression 
                         | assignment_expression 
                         ;
 
@@ -103,18 +103,18 @@ unary_expression: TK_MASMAS unary_expression
                 | postfix_expression 
                 ;
 
-multiplicative_expression: multiplicative_expression '*' unary_expression 
-      | multiplicative_expression '/' unary_expression
+multiplicative_expression: multiplicative_expression TK_ASTERISCO unary_expression 
+      | multiplicative_expression TK_PLECA unary_expression
       | unary_expression 
       ;
 
-additive_expression:  additive_expression '+' multiplicative_expression
-                    | additive_expression '-' multiplicative_expression 
+additive_expression:  additive_expression TK_SUMA multiplicative_expression
+                    | additive_expression TK_RESTA multiplicative_expression 
                     | multiplicative_expression 
                     ;
 
-relational_expression: relational_expression '>' additive_expression
-                     | relational_expression '<' additive_expression 
+relational_expression: relational_expression TK_MAYOR additive_expression
+                     | relational_expression TK_MENOR additive_expression 
                      | relational_expression TK_MAYORIGUAL additive_expression 
                      | relational_expression TK_MENORIGUAL additive_expression 
                      | additive_expression 
@@ -133,7 +133,7 @@ logical_and_expression: logical_and_expression TK_AND equality_expression
                       | equality_expression 
                       ;
 
-assignment_operator: '=' 
+assignment_operator: TK_IGUAL 
                    | TK_SUMAIGUAL 
                    | TK_RESTAIGUAL 
                    ;

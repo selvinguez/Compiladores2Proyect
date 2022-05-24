@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon May  9 16:34:25 2022
+# Make data base, printed on Tue May 24 11:06:56 2022
 
 # Variables
 
@@ -47,11 +47,11 @@ CURDIR := /home/selvinguez/Documentos/Proyecto
 # makefile
 SHELL = /bin/sh
 # environment
-SNAP_DATA = /var/snap/code/95
+SNAP_DATA = /var/snap/code/97
 # environment
 VSCODE_NLS_CONFIG = {"locale":"es-419","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:47764
+JOURNAL_STREAM = 8:47465
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -69,19 +69,19 @@ USERNAME = selvinguez
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=6f768918fd640c50bd788e2c628d088b
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-_ = /snap/code/95/usr/share/code/code
+_ = /snap/code/97/usr/share/code/code
 # environment
-MANAGERPID = 1634
+MANAGERPID = 1580
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 VSCODE_CWD = /home/selvinguez
 # environment
-GSETTINGS_SCHEMA_DIR = /snap/code/95/usr/share/glib-2.0/schemas
+GSETTINGS_SCHEMA_DIR = /snap/code/97/usr/share/glib-2.0/schemas
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -89,15 +89,15 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/selvinguez-Inspiron-5565:@/tmp/.ICE-unix/1866,unix/selvinguez-Inspiron-5565:/tmp/.ICE-unix/1866
+SESSION_MANAGER = local/selvinguez-Inspiron-5565:@/tmp/.ICE-unix/1811,unix/selvinguez-Inspiron-5565:/tmp/.ICE-unix/1811
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
 GDK_PIXBUF_MODULE_FILE = /home/selvinguez/snap/code/common/.cache/gdk-pixbuf-loaders.cache
 # environment
-SNAP = /snap/code/95
+SNAP = /snap/code/97
 # environment
-SNAP_VERSION = 57fd6d01
+SNAP_VERSION = c3511e6c
 # environment
 XDG_MENU_PREFIX = gnome-
 # environment
@@ -107,9 +107,9 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 24d610cf95f843bcb792c6269757e4eb
+INVOCATION_ID = 3ff9c0b19817471faf6d9a53cf351656
 # environment
-GDK_PIXBUF_MODULEDIR = /snap/code/95/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
+GDK_PIXBUF_MODULEDIR = /snap/code/97/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -119,7 +119,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 3817
+GIO_LAUNCHED_DESKTOP_FILE_PID = 3577
 # automatic
 %F = $(notdir $%)
 # environment
@@ -133,7 +133,7 @@ PWD = /home/selvinguez/Documentos/Proyecto
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1816
+SSH_AGENT_PID = 1761
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -147,7 +147,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 VSCODE_CLI = 1
 # environment
-VSCODE_CODE_CACHE_PATH = /home/selvinguez/.config/Code/CachedData/57fd6d0195bb9b9d1b49f6da5db789060795de47
+VSCODE_CODE_CACHE_PATH = /home/selvinguez/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
 # environment
 LOGNAME = selvinguez
 # environment
@@ -177,19 +177,19 @@ MAKECMDGOALS := all
 # environment
 QT_IM_MODULE = ibus
 # environment
-SNAP_USER_DATA = /home/selvinguez/snap/code/95
+SNAP_USER_DATA = /home/selvinguez/snap/code/97
 # environment
 SHLVL = 0
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-1ed48a59-0df0-4d2a-955d-7e29d46983bc.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-c6adcb7b-6932-4e97-b98f-6726a0c817a0.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
 USER = selvinguez
 # environment
-SNAP_REVISION = 95
+SNAP_REVISION = 97
 # makefile
 .DEFAULT_GOAL := all
 # environment
@@ -205,7 +205,7 @@ MAKE_COMMAND := make
 # environment
 LANGUAGE = es_HN:es
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-52c3ba5f-1.67.0-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-52c3ba5f-1.67.2-main.sock
 # environment
 BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # makefile
@@ -217,6 +217,7 @@ MFLAGS = -pqrR
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
+ 
 GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
@@ -233,7 +234,7 @@ SNAP_NAME = code
 # environment
 LC_ALL = C
 # environment
-GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+DBUS_STARTER_BUS_TYPE = session
 # automatic
 ^F = $(notdir $^)
 # default
@@ -246,16 +247,16 @@ CHROME_DESKTOP = code-url-handler.desktop
 WINDOWPATH = 2
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
-# environment
-GJS_DEBUG_OUTPUT = stderr
 # default
 .RECIPEPREFIX := 
 # environment
 LANG = C
 # environment
-VSCODE_PID = 3899
+VSCODE_PID = 3625
+# environment
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=6f768918fd640c50bd788e2c628d088b
 # variable set hash-table stats:
-# Load=122/1024=12%, Rehash=0, Collisions=18/157=11%
+# Load=122/1024=12%, Rehash=0, Collisions=18/159=11%
 
 # Pattern-specific Variable Values
 
@@ -263,9 +264,9 @@ VSCODE_PID = 3899
 
 # Directories
 
-# . (device 2054, inode 2097312): 12 files, no impossibilities.
+# . (device 2054, inode 2097312): 17 files, no impossibilities.
 
-# 12 files, no impossibilities in 1 directories.
+# 17 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -278,71 +279,57 @@ all: proyect
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Needs to be updated (-q is set).
- 
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+#  Successfully updated.
 
 # Not a target:
 proyect.l:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-09 16:30:11.933928
+#  Last modified 2022-05-24 11:05:59.055336425
 #  File has been updated.
 #  Successfully updated.
 
-proyect: proyect_lexer.o main.o
+proyect: proyect_parser.o proyect_lexer.o main.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-05-09 16:28:51.629202
+#  Last modified 2022-05-24 11:06:10.727202503
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+#  Successfully updated.
 #  recipe to execute (from 'Makefile', line 5):
 	g++ --std=c++11 -g -o $@ $^
 
 # Not a target:
-.SUFFIXES:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-Makefile:
+proyect.y:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-08 06:53:14.931604
+#  Last modified 2022-05-24 10:54:56.373686863
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
-main.cpp:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-24 10:55:41.360576936
+#  File has been updated.
+#  Successfully updated.
+
+proyect_parser.cpp: proyect.y
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Last modified 2022-05-24 11:06:10.34720679
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 17):
+	bison --defines=tokens.h -W -o $@ $<
+
+# Not a target:
+main.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-24 10:49:15.063208721
+#  File has been updated.
+#  Successfully updated.
 
 proyect_lexer.cpp: proyect.l
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
-#  Last modified 2022-05-09 16:28:51.169197
+#  Last modified 2022-05-24 11:06:10.443205707
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := proyect_lexer.cpp
-# automatic
-# % := 
-# automatic
-# * := 
-# automatic
-# + := proyect.l
-# automatic
-# | := 
-# automatic
-# < := proyect.l
-# automatic
-# ^ := proyect.l
-# automatic
-# ? := proyect.l
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/13=8%
+#  Successfully updated.
 #  recipe to execute (from 'Makefile', line 14):
 	flex -o $@ $<
 
@@ -356,44 +343,51 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 19):
+#  recipe to execute (from 'Makefile', line 23):
 	rm -f *.o
 	rm -f ${TARGET}_lexer.cpp
 	rm -f ${TARGET}
 	rm -f ${TARGET}_parser.cpp
 	rm -f tokens.h
 
+proyect_parser.o: proyect_parser.cpp
+#  Implicit rule search has not been done.
+#  Last modified 2022-05-24 11:06:10.431205843
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 20):
+	g++ --std=c++11 -g -c -o $@ $<
+
 main.o: main.cpp
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Last modified 2022-05-24 11:06:10.663203225
+#  File has been updated.
+#  Successfully updated.
 #  recipe to execute (from 'Makefile', line 8):
 	g++ --std=c++11 -g -c -o $@ $<
 
 proyect_lexer.o: proyect_lexer.cpp
 #  Implicit rule search has not been done.
-#  Last modified 2022-05-09 16:28:51.4452
+#  Last modified 2022-05-24 11:06:10.619203722
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+#  Successfully updated.
 #  recipe to execute (from 'Makefile', line 11):
 	g++ --std=c++11 -g -c -o $@ $<
 
 # files hash-table stats:
-# Load=11/1024=1%, Rehash=0, Collisions=0/33=0%
+# Load=14/1024=1%, Rehash=0, Collisions=1/39=3%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 18 / storage = 170 B / avg = 9 B
-# current buf: size = 8162 B / used = 170 B / count = 18 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 23 / storage = 231 B / avg = 10 B
+# current buf: size = 8162 B / used = 231 B / count = 23 / avg = 10 B
 
-# strcache performance: lookups = 40 / hit rate = 55%
+# strcache performance: lookups = 51 / hit rate = 54%
 # hash-table stats:
-# Load=18/8192=0%, Rehash=0, Collisions=1/40=2%
-# Finished Make data base on Mon May  9 16:34:25 2022
+# Load=23/8192=0%, Rehash=0, Collisions=1/51=2%
+# Finished Make data base on Tue May 24 11:06:56 2022
 
  
