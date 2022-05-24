@@ -3,78 +3,9 @@
 %x comment 
 %x comment2 
 %{
-    #define YYSTYPE char*
-    enum yytokentype{
-        TK_NUMBER = 258,
-        TK_BOOLEAN = 259,
-        TK_STRING = 260,
-        TK_ARRAY = 261, 
-        TK_BREAK = 262,
-        TK_CONST = 263,
-        TK_DO = 264,
-        TK_ELSE = 265, 
-        TK_FALSE = 266,
-        TK_FOR = 267,
-        TK_IF = 268,
-        TK_IN = 269,
-        TK_RETURN = 270,
-        TK_TRUE = 271,
-        TK_VAR = 272,
-        TK_VOID = 273,
-        TK_WHILE = 274,
-        TK_LET = 275,
-        TK_OF = 276,
-        TK_CONTINUE = 277,
-        TK_NUMBERR = 278,
-        TK_IDENTIFICADOR = 279,
-        TK_ASTERISCO = 280,
-        TK_SUMA = 281,
-        TK_SUMAIGUAL = 282,
-        TK_YIGUAL =283,
-        TK_AND = 284,
-        TK_DOBLEIGUAL = 285,
-        TK_OR = 286,
-        TK_DISTINTO = 287,
-        TK_RESTA = 288,
-        TK_ABREP = 289,
-        TK_CIERRAP = 290,
-        TK_RESTAIGUAL = 291,
-        TK_ORIGUAL = 292,
-        TK_MENOR = 293,
-        TK_MENORIGUAL = 294,
-        TK_ABREC = 295,
-        TK_CIERRAC = 296,
-        TK_UP = 297,
-        TK_ASTERISCOIGUAL = 298,
-        TK_UPIGUAL = 299,
-        TK_MAYOR = 300,
-        TK_MAYORIGUAL = 301,
-        TK_ABREIGUAL = 302,
-        TK_CIERRAIGUAL = 303,
-        TK_PLECA = 304,
-        TK_PLECAIGUAL = 305,
-        TK_MASMAS = 306,
-        TK_IGUAL = 307,
-        TK_DOSPUNTOSIGUAL = 308,
-        TK_COMMA = 309,
-        TK_PUNTOCOMMA = 310,
-        TK_PORCENTAJE = 311,
-        TK_PORCENTAJEIGUAL = 312,
-        TK_MENOSMENOS = 313,
-        TK_EXCLAMACION = 314,
-        TK_LIT_STRING = 315,
-        TK_DOSPUNTOS = 316,
-        TK_IMPORT = 317,
-        TK_FROM = 318,
-        TK_PRINT = 319,
-        TK_FUNCTION = 320,
-        TK_ARROWFUNC = 321
-    };
-  
-    extern char* yylval;
-   
-    
+    #include "tokens.h"
 %}
+
 
 IDENTIFICADOR [A-Za-z][A-Za-z0-9]*
 
@@ -108,8 +39,8 @@ IDENTIFICADOR [A-Za-z][A-Za-z0-9]*
 "from" {printf("Token %s",yytext); return TK_FROM;}
 "console.log" {printf("Token %s",yytext); return TK_PRINT;}
 "function" {printf("Token %s",yytext); return TK_FUNCTION;}
-[0-9]+ { yylval = strdup(yytext);printf("Token %s",yytext); return TK_NUMBERR;}
-{IDENTIFICADOR} { printf("Token %s",yytext); yylval = strdup( yytext); return TK_IDENTIFICADOR; }
+[0-9]+ { printf("Token %s",yytext); return TK_LIT_NUMBER;}
+{IDENTIFICADOR} { printf("Token %s",yytext);  return TK_IDENTIFICADOR; }
 
 \* { printf("Token %s",yytext);return TK_ASTERISCO;}
 "+" { printf("Token %s",yytext);return TK_SUMA;}
@@ -133,8 +64,8 @@ IDENTIFICADOR [A-Za-z][A-Za-z0-9]*
 "^=" {printf("Token %s",yytext);return TK_UPIGUAL;}
 ">" {printf("Token %s",yytext);return TK_MAYOR;}
 ">=" {printf("Token %s",yytext);return TK_MAYORIGUAL;}
-"{" {printf("Token %s",yytext);return TK_ABREIGUAL;}
-"}" {printf("Token %s",yytext);return TK_CIERRAIGUAL;}
+"{" {printf("Token %s",yytext);return TK_ABRELLAVE;}
+"}" {printf("Token %s",yytext);return TK_CIERRALLAVE;}
 "/" {printf("Token %s",yytext);return TK_PLECA;}
 "/=" {printf("Token %s",yytext);return TK_PLECAIGUAL;}
 "++" {printf("Token %s",yytext);return TK_MASMAS;}

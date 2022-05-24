@@ -4,12 +4,12 @@ using namespace std;
 
 extern FILE *yyin;
 
-extern int yylineno;
+//extern int yylineno;
 
 
-int yylex();
-char* yylval;
-
+//int yylex();
+//char* yylval;
+int yyparse();
 
 int main(int argc, char * argv[]){
 
@@ -26,14 +26,14 @@ int main(int argc, char * argv[]){
     }
 
     yyin = f;
-    int token;
+    /*int token;
     while(token = yylex()){
         printf("\tLine: %d, Token Type %d \n",yylineno,token);
      
             //printf(" =%s\n",yylval);
        
-    }
-   // yyparse();
+    }*/
+    yyparse();
 
     return 0;
 }
