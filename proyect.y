@@ -27,16 +27,21 @@
 
 %%
 
-input:input external_declaration
-    | external_declaration
+input: external_declaration
     ;
 
-external_declaration: declaration
-    | statements 
+external_declaration: statements 
     ;
 
-declaration: TK_VAR TK_IDENTIFICADOR TK_DOSPUNTOS type TK_PUNTOCOMMA
+declaration: declaration_type TK_IDENTIFICADOR TK_DOSPUNTOS type TK_PUNTOCOMMA
     ;
+
+
+declaration_type: TK_VAR
+    | TK_LET
+    ;
+
+decl_assign_stmt: declaration_type TK_IDENTIFICADOR TK_DOSPUNTOS type TK_IGUAL logical_or_expression TK_PUNTOCOMMA
 
 type: TK_NUMBER
     | TK_BOOLEAN
@@ -47,25 +52,34 @@ statements: %empty
     | statements statement
     ;
 
-statement: if_stmt
+statement: declaration
+    | if_stmt
     | for_stmt
     | while_stmt
-    | assignation_stmt
+    | decl_assign_stmt
+    | const_stmt
+    | assignment_expression
     | break_stmt
     | continue_stmt
+    | print_stmt
     ;
 
-if_stmt: TK_IF TK_ABREP expression TK_CIERRAP TK_ABRELLAVE statement TK_CIERRALLAVE
-    | TK_IF TK_ABREP expression TK_CIERRAP TK_ABRELLAVE statement TK_CIERRALLAVE TK_ELSE TK_ABRELLAVE statement TK_CIERRALLAVE
+if_stmt: TK_IF TK_ABREP expression TK_CIERRAP TK_ABRELLAVE statements TK_CIERRALLAVE
+    | TK_IF TK_ABREP expression TK_CIERRAP TK_ABRELLAVE statements TK_CIERRALLAVE TK_ELSE TK_ABRELLAVE statements TK_CIERRALLAVE
     ;
 
-for_stmt: TK_FOR
+for_stmt: TK_FOR TK_ABREP decl_assign_stmt expression TK_PUNTOCOMMA unary_expression TK_CIERRAP TK_ABRELLAVE statements TK_CIERRALLAVE
+    | TK_FOR TK_ABREP declaration_type TK_IDENTIFICADOR type_for_each TK_IDENTIFICADOR TK_CIERRAP TK_ABRELLAVE statements TK_CIERRALLAVE
     ;
 
-while_stmt: TK_WHILE
+type_for_each: TK_OF
+    | TK_IN
     ;
 
-assignation_stmt: TK_CONST
+while_stmt: TK_WHILE TK_ABREP expression TK_CIERRAP TK_ABRELLAVE statements TK_CIERRALLAVE
+    ;
+
+const_stmt: TK_CONST TK_IDENTIFICADOR TK_IGUAL logical_or_expression TK_PUNTOCOMMA
     ;
 
 break_stmt: TK_BREAK TK_PUNTOCOMMA
@@ -74,13 +88,17 @@ break_stmt: TK_BREAK TK_PUNTOCOMMA
 continue_stmt: TK_CONTINUE TK_PUNTOCOMMA
     ;    
 
+print_stmt: TK_PRINT TK_ABREP expression TK_CIERRAP TK_PUNTOCOMMA
+
 primary_expression: TK_ABREP expression TK_CIERRAP 
     | TK_IDENTIFICADOR
     | constant 
-    | TK_LIT_STRING 
+    | TK_LIT_STRING
+    | TK_TRUE
+    | TK_FALSE 
     ;
 
-assignment_expression: unary_expression assignment_operator assignment_expression 
+assignment_expression: unary_expression assignment_operator assignment_expression TK_PUNTOCOMMA
                      | logical_or_expression 
                      ;
 
@@ -105,6 +123,7 @@ unary_expression: TK_MASMAS unary_expression
 
 multiplicative_expression: multiplicative_expression TK_ASTERISCO unary_expression 
       | multiplicative_expression TK_PLECA unary_expression
+      | multiplicative_expression TK_PORCENTAJE unary_expression
       | unary_expression 
       ;
 
@@ -135,7 +154,10 @@ logical_and_expression: logical_and_expression TK_AND equality_expression
 
 assignment_operator: TK_IGUAL 
                    | TK_SUMAIGUAL 
-                   | TK_RESTAIGUAL 
+                   | TK_RESTAIGUAL
+                   | TK_ASTERISCOIGUAL
+                   | TK_PLECAIGUAL
+                   | TK_PORCENTAJEIGUAL 
                    ;
 
 expression: assignment_expression 

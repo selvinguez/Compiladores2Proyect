@@ -43,12 +43,14 @@ IDENTIFICADOR [A-Za-z][A-Za-z0-9]*
 {IDENTIFICADOR} {   return TK_IDENTIFICADOR; }
 
 \* { return TK_ASTERISCO;}
+"++" {return TK_MASMAS;}
 "+" { return TK_SUMA;}
 "+="     { return TK_SUMAIGUAL; }
 "&="   { return TK_YIGUAL; }
 "&&"     {  return TK_AND; }
 "=="    {  return TK_DOBLEIGUAL; }
 "!="     {  return TK_DISTINTO; }
+"--" {return TK_MENOSMENOS;}
 "-" { return TK_RESTA;}
 "(" {return TK_ABREP;}
 ")" {return TK_CIERRAP;}
@@ -68,14 +70,14 @@ IDENTIFICADOR [A-Za-z][A-Za-z0-9]*
 "}" {return TK_CIERRALLAVE;}
 "/" {return TK_PLECA;}
 "/=" {return TK_PLECAIGUAL;}
-"++" {return TK_MASMAS;}
+
 "=" {return TK_IGUAL;}
 ":=" {return TK_DOSPUNTOSIGUAL;}
 "," {return TK_COMMA;}
 ";" {return TK_PUNTOCOMMA;}
 "%" {return TK_PORCENTAJE;}
 "%=" {return TK_PORCENTAJEIGUAL;}
-"--" {return TK_MENOSMENOS;}
+
 "!" {return TK_EXCLAMACION;}
 ":" {return TK_DOSPUNTOS;}
 "=>" {return TK_ARROWFUNC;}

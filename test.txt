@@ -2,6 +2,32 @@ var x:number;
 
 if(x<20 && x>20){
   continue;
+  var n:boolean;
+  var j:number = 10;
+  n = true;
 }else{
   break;
 }
+for(var n:number = 0; n <10;n++){
+  break;
+}
+var index:number;
+index = 0;
+
+while (index < 9) {
+
+    index = index + 1;
+
+    if (index / 2){
+        continue;
+        }
+
+    console.log(index);
+}
+for(var val of arr){
+  console.log(val);
+}
+for(var val in arr){
+  console.log(val);
+}
+const suma = 10;
