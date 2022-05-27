@@ -41,11 +41,15 @@ declaration_type: TK_VAR
     | TK_LET
     ;
 
-decl_assign_stmt: declaration_type TK_IDENTIFICADOR TK_DOSPUNTOS type TK_IGUAL logical_or_expression TK_PUNTOCOMMA
+decl_assign_stmt: declaration_type TK_IDENTIFICADOR TK_DOSPUNTOS type TK_IGUAL assign_arrow_func_exp TK_PUNTOCOMMA
 
 type: TK_NUMBER
     | TK_BOOLEAN
     | TK_STRING
+    ;
+
+assign_arrow_func_exp: logical_or_expression
+    | arrow_function
     ;
 
 statements: %empty
@@ -62,6 +66,9 @@ statement: declaration
     | break_stmt
     | continue_stmt
     | print_stmt
+    | import_stmt
+    | return_stmt
+    | function_stmt
     ;
 
 if_stmt: TK_IF TK_ABREP expression TK_CIERRAP TK_ABRELLAVE statements TK_CIERRALLAVE
@@ -89,6 +96,31 @@ continue_stmt: TK_CONTINUE TK_PUNTOCOMMA
     ;    
 
 print_stmt: TK_PRINT TK_ABREP expression TK_CIERRAP TK_PUNTOCOMMA
+    ;
+
+import_stmt: TK_IMPORT TK_ABRELLAVE TK_IDENTIFICADOR TK_CIERRALLAVE TK_FROM TK_LIT_STRING TK_PUNTOCOMMA
+    ;
+
+return_stmt: TK_RETURN expression TK_PUNTOCOMMA
+    ;
+
+function_stmt: TK_FUNCTION TK_IDENTIFICADOR TK_ABREP parameter_list TK_CIERRAP TK_ABRELLAVE statements TK_CIERRALLAVE
+    ;
+
+parameter_list: parameter_list TK_COMMA parameter
+    | parameter
+    ;
+
+parameter: TK_IDENTIFICADOR
+
+arrow_function: TK_ABREP arrow_parameters TK_CIERRAP TK_DOSPUNTOS type TK_ARROWFUNC TK_ABRELLAVE statements TK_CIERRALLAVE
+    ;
+
+arrow_parameters: arrow_parameters TK_COMMA arrow_parameter
+    | arrow_parameter
+    ;
+
+arrow_parameter: TK_IDENTIFICADOR TK_DOSPUNTOS type
 
 primary_expression: TK_ABREP expression TK_CIERRAP 
     | TK_IDENTIFICADOR
