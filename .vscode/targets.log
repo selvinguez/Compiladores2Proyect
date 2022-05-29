@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue May 24 11:06:56 2022
+# Make data base, printed on Sat May 28 22:42:12 2022
 
 # Variables
 
@@ -51,7 +51,7 @@ SNAP_DATA = /var/snap/code/97
 # environment
 VSCODE_NLS_CONFIG = {"locale":"es-419","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:47465
+JOURNAL_STREAM = 8:47056
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -69,13 +69,13 @@ USERNAME = selvinguez
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=6f768918fd640c50bd788e2c628d088b
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
 _ = /snap/code/97/usr/share/code/code
 # environment
-MANAGERPID = 1580
+MANAGERPID = 1603
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -89,7 +89,7 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/selvinguez-Inspiron-5565:@/tmp/.ICE-unix/1811,unix/selvinguez-Inspiron-5565:/tmp/.ICE-unix/1811
+SESSION_MANAGER = local/selvinguez-Inspiron-5565:@/tmp/.ICE-unix/1834,unix/selvinguez-Inspiron-5565:/tmp/.ICE-unix/1834
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -107,7 +107,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 3ff9c0b19817471faf6d9a53cf351656
+INVOCATION_ID = 966924bd88fe424f8ada21e5e14c77a2
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/97/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -119,7 +119,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 3577
+GIO_LAUNCHED_DESKTOP_FILE_PID = 3419
 # automatic
 %F = $(notdir $%)
 # environment
@@ -133,7 +133,7 @@ PWD = /home/selvinguez/Documentos/Proyecto
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1761
+SSH_AGENT_PID = 1784
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -183,7 +183,7 @@ SHLVL = 0
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-c6adcb7b-6932-4e97-b98f-6726a0c817a0.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-184f2c32-eeb0-48d6-b1f1-eeaa0fadcb4b.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -217,7 +217,6 @@ MFLAGS = -pqrR
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
- 
 GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
@@ -234,7 +233,7 @@ SNAP_NAME = code
 # environment
 LC_ALL = C
 # environment
-DBUS_STARTER_BUS_TYPE = session
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # automatic
 ^F = $(notdir $^)
 # default
@@ -247,16 +246,16 @@ CHROME_DESKTOP = code-url-handler.desktop
 WINDOWPATH = 2
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+GJS_DEBUG_OUTPUT = stderr
 # default
 .RECIPEPREFIX := 
 # environment
 LANG = C
 # environment
-VSCODE_PID = 3625
-# environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=6f768918fd640c50bd788e2c628d088b
+VSCODE_PID = 3494
 # variable set hash-table stats:
-# Load=122/1024=12%, Rehash=0, Collisions=18/159=11%
+# Load=122/1024=12%, Rehash=0, Collisions=18/162=11%
 
 # Pattern-specific Variable Values
 
@@ -264,9 +263,9 @@ DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=6f768918fd640c50bd788e2
 
 # Directories
 
-# . (device 2054, inode 2097312): 17 files, no impossibilities.
+# . (device 2054, inode 2097312): 10 files, no impossibilities.
 
-# 17 files, no impossibilities in 1 directories.
+# 10 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -279,57 +278,84 @@ all: proyect
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
 
 # Not a target:
+ 
 proyect.l:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-24 11:05:59.055336425
-#  File has been updated.
-#  Successfully updated.
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 proyect: proyect_parser.o proyect_lexer.o main.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-05-24 11:06:10.727202503
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
 #  recipe to execute (from 'Makefile', line 5):
 	g++ --std=c++11 -g -o $@ $^
 
 # Not a target:
 proyect.y:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-24 10:54:56.373686863
+#  Last modified 2022-05-24 11:09:27.677497487
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-24 10:55:41.360576936
+#  Last modified 2022-05-24 11:09:27.677497487
 #  File has been updated.
 #  Successfully updated.
 
 proyect_parser.cpp: proyect.y
 #  Implicit rule search has not been done.
-#  Last modified 2022-05-24 11:06:10.34720679
+#  Implicit/static pattern stem: ''
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := proyect_parser.cpp
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := proyect.y
+# automatic
+# | := 
+# automatic
+# < := proyect.y
+# automatic
+# ^ := proyect.y
+# automatic
+# ? := proyect.y
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/13=8%
 #  recipe to execute (from 'Makefile', line 17):
 	bison --defines=tokens.h -W -o $@ $<
 
 # Not a target:
 main.cpp:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-24 10:49:15.063208721
-#  File has been updated.
-#  Successfully updated.
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 proyect_lexer.cpp: proyect.l
 #  Implicit rule search has not been done.
-#  Last modified 2022-05-24 11:06:10.443205707
-#  File has been updated.
-#  Successfully updated.
+#  Modification time never checked.
+#  File has not been updated.
 #  recipe to execute (from 'Makefile', line 14):
 	flex -o $@ $<
 
@@ -352,42 +378,42 @@ clean:
 
 proyect_parser.o: proyect_parser.cpp
 #  Implicit rule search has not been done.
-#  Last modified 2022-05-24 11:06:10.431205843
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
 #  recipe to execute (from 'Makefile', line 20):
 	g++ --std=c++11 -g -c -o $@ $<
 
 main.o: main.cpp
 #  Implicit rule search has not been done.
-#  Last modified 2022-05-24 11:06:10.663203225
-#  File has been updated.
-#  Successfully updated.
+#  Modification time never checked.
+#  File has not been updated.
 #  recipe to execute (from 'Makefile', line 8):
 	g++ --std=c++11 -g -c -o $@ $<
 
 proyect_lexer.o: proyect_lexer.cpp
 #  Implicit rule search has not been done.
-#  Last modified 2022-05-24 11:06:10.619203722
-#  File has been updated.
-#  Successfully updated.
+#  Modification time never checked.
+#  File has not been updated.
 #  recipe to execute (from 'Makefile', line 11):
 	g++ --std=c++11 -g -c -o $@ $<
 
 # files hash-table stats:
-# Load=14/1024=1%, Rehash=0, Collisions=1/39=3%
+# Load=14/1024=1%, Rehash=0, Collisions=1/40=2%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 23 / storage = 231 B / avg = 10 B
-# current buf: size = 8162 B / used = 231 B / count = 23 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 22 / storage = 222 B / avg = 10 B
+# current buf: size = 8162 B / used = 222 B / count = 22 / avg = 10 B
 
-# strcache performance: lookups = 51 / hit rate = 54%
+# strcache performance: lookups = 45 / hit rate = 51%
 # hash-table stats:
-# Load=23/8192=0%, Rehash=0, Collisions=1/51=2%
-# Finished Make data base on Tue May 24 11:06:56 2022
+# Load=22/8192=0%, Rehash=0, Collisions=1/45=2%
+# Finished Make data base on Sat May 28 22:42:12 2022
 
  
