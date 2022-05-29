@@ -1,5 +1,8 @@
 import { StringValidator } from "./StringValidator";
 
+var arr:number[] = new Array(4);
+arr.push(10);
+arr.push("hola");
 var x:number;
 var y:number[];
 var nums:number[] = [1,2,3,3];
@@ -42,10 +45,57 @@ const suma = 10;
 function add(x, y) {
   return x + y;
 }
-let sum:number = (x: number, y: number): number => {
+let sum = (x: number, y: number): number => {
     return x + y;
 };
-const su =  (x: number, y: number): number => {
-    return x + y;
+
+
+const calculateValue = (x: number): number => {
+if (x < 1) {
+return 0;
+}
+let a =0;
+let b= 1;
+for (let i= 1; i< x; ++i) {
+const c = a +b;
+a=bj;
+b=c;
+
+}
+
+return b;
 };
-a = [2,3,4];
+
+
+for (let n= 0; n< b; ++n) {
+const value = calculateValue(n);
+console.log("£(" + n + ")=" + value);
+}
+
+var numl:number = 10;
+var num2:number = 2;
+var res:number = 0;
+
+
+res = numl + num2;
+console.log("Sum: "+res);
+
+res = numl - num2;
+console.log("Difference: "+res);
+
+res = numl-num2;
+console.log("Product: — "+res);
+
+res = num1/num2;
+console.log("Quotient: — "+res);
+
+res = numi%num2;
+console.log("Remainder: — "+res);
+
+numd++
+console.log("Value of numl after increment "+num1);
+
+num2--
+console.log("Value of num2 after decrement "+num2);
+
+console.log(arr[index]);

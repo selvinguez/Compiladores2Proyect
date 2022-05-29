@@ -16,9 +16,11 @@ IDENTIFICADOR [A-Za-z][A-Za-z0-9]*
 \".*\" { return TK_LIT_STRING; }
 \'.*\' { return TK_LIT_STRING; }
 "number" {return TK_NUMBER;}
+"new" {return TK_NEW;}
+"push" {return TK_PUSH;}
 "boolean" {return TK_BOOLEAN;}
 "string" {return TK_STRING ;}
-"array" {return TK_ARRAY;}
+"Array" {return TK_ARRAY;}
 "break" { return TK_BREAK; }
 "const" {return TK_CONST;}
 "do" {return TK_DO;}
@@ -44,6 +46,7 @@ IDENTIFICADOR [A-Za-z][A-Za-z0-9]*
 
 \* { return TK_ASTERISCO;}
 "++" {return TK_MASMAS;}
+"." {return TK_PUNTO;}
 "+" { return TK_SUMA;}
 "+="     { return TK_SUMAIGUAL; }
 "&="   { return TK_YIGUAL; }
