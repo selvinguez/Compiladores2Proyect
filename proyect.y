@@ -33,7 +33,11 @@ input: external_declaration
 external_declaration: statements 
     ;
 
-declaration: declaration_type TK_IDENTIFICADOR TK_DOSPUNTOS type TK_PUNTOCOMMA
+declaration: declaration_type TK_IDENTIFICADOR TK_DOSPUNTOS type array_brackets TK_PUNTOCOMMA
+    ;
+
+array_brackets: TK_ABREC TK_CIERRAC
+    | %empty
     ;
 
 
@@ -41,14 +45,27 @@ declaration_type: TK_VAR
     | TK_LET
     ;
 
-decl_assign_stmt: declaration_type TK_IDENTIFICADOR TK_DOSPUNTOS type TK_IGUAL assign_arrow_func_exp TK_PUNTOCOMMA
+decl_assign_stmt: declaration_type TK_IDENTIFICADOR TK_DOSPUNTOS type array_brackets TK_IGUAL assign_arrow_func_exp TK_PUNTOCOMMA
+    | declaration_type TK_IDENTIFICADOR TK_IGUAL assign_arrow_func_exp TK_PUNTOCOMMA
+    ;
 
 type: TK_NUMBER
     | TK_BOOLEAN
     | TK_STRING
     ;
 
+array_type: TK_ABREC array_parameter_list TK_CIERRAC
+    ;
+
+array_parameter_list: array_parameter_list TK_COMMA array_parameter
+    | array_parameter
+    ;
+
+array_parameter: logical_or_expression
+    ;
+
 assign_arrow_func_exp: logical_or_expression
+    | array_type
     | arrow_function
     ;
 
@@ -69,7 +86,10 @@ statement: declaration
     | import_stmt
     | return_stmt
     | function_stmt
+    | arreglo_expression
     ;
+
+arreglo_expression: TK_ARRAY
 
 if_stmt: TK_IF TK_ABREP expression TK_CIERRAP TK_ABRELLAVE statements TK_CIERRALLAVE
     | TK_IF TK_ABREP expression TK_CIERRAP TK_ABRELLAVE statements TK_CIERRALLAVE TK_ELSE TK_ABRELLAVE statements TK_CIERRALLAVE
@@ -86,7 +106,7 @@ type_for_each: TK_OF
 while_stmt: TK_WHILE TK_ABREP expression TK_CIERRAP TK_ABRELLAVE statements TK_CIERRALLAVE
     ;
 
-const_stmt: TK_CONST TK_IDENTIFICADOR TK_IGUAL logical_or_expression TK_PUNTOCOMMA
+const_stmt: TK_CONST TK_IDENTIFICADOR TK_IGUAL assign_arrow_func_exp TK_PUNTOCOMMA
     ;
 
 break_stmt: TK_BREAK TK_PUNTOCOMMA
@@ -131,7 +151,8 @@ primary_expression: TK_ABREP expression TK_CIERRAP
     ;
 
 assignment_expression: unary_expression assignment_operator assignment_expression TK_PUNTOCOMMA
-                     | logical_or_expression 
+                     | logical_or_expression
+                     | array_type 
                      ;
 
 postfix_expression: primary_expression 
@@ -189,7 +210,8 @@ assignment_operator: TK_IGUAL
                    | TK_RESTAIGUAL
                    | TK_ASTERISCOIGUAL
                    | TK_PLECAIGUAL
-                   | TK_PORCENTAJEIGUAL 
+                   | TK_PORCENTAJEIGUAL
+                   | TK_UPIGUAL 
                    ;
 
 expression: assignment_expression 

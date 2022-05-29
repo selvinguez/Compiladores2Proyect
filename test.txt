@@ -1,6 +1,12 @@
 import { StringValidator } from "./StringValidator";
 
 var x:number;
+var y:number[];
+var nums:number[] = [1,2,3,3];
+var nums = [1, 2, 3, 3];
+let a = 23;
+let b = true;
+var c = 'check';
 
 if(x<20 && x>20){
   continue;
@@ -39,3 +45,7 @@ function add(x, y) {
 let sum:number = (x: number, y: number): number => {
     return x + y;
 };
+const su =  (x: number, y: number): number => {
+    return x + y;
+};
+a = [2,3,4];
