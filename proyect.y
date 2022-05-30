@@ -22,7 +22,7 @@
 %token TK_IDENTIFICADOR TK_ASTERISCO TK_SUMA TK_SUMAIGUAL TK_YIGUAL TK_AND TK_DOBLEIGUAL TK_OR TK_DISTINTO 
 %token TK_RESTA TK_ABREP TK_CIERRAP TK_RESTAIGUAL TK_ORIGUAL TK_MENOR TK_MENORIGUAL TK_ABREC TK_CIERRAC TK_UP 
 %token TK_ASTERISCOIGUAL TK_UPIGUAL TK_MAYOR TK_MAYORIGUAL TK_PLECA TK_PLECAIGUAL  TK_PUNTO TK_PUSH
-%token TK_MASMAS TK_IGUAL TK_DOSPUNTOSIGUAL TK_COMMA TK_PUNTOCOMMA TK_PORCENTAJE TK_PORCENTAJEIGUAL TK_MENOSMENOS
+%token TK_MASMAS TK_IGUAL TK_COMMA TK_PUNTOCOMMA TK_PORCENTAJE TK_PORCENTAJEIGUAL TK_MENOSMENOS
 %token TK_EXCLAMACION TK_LIT_STRING TK_DOSPUNTOS TK_IMPORT TK_FROM TK_PRINT TK_FUNCTION TK_ARROWFUNC TK_NEW
 
 %%
@@ -78,6 +78,7 @@ statement: declaration
     | if_stmt
     | for_stmt
     | while_stmt
+    | do_while_stmt
     | decl_assign_stmt
     | const_stmt
     | assignment_expression
@@ -88,9 +89,20 @@ statement: declaration
     | return_stmt
     | function_stmt
     | arreglo_expression
+    | method_expression
     ;
 
 arreglo_expression: TK_IDENTIFICADOR TK_PUNTO TK_PUSH TK_ABREP  primary_expression TK_CIERRAP TK_PUNTOCOMMA;
+
+method_expression: TK_IDENTIFICADOR TK_ABREP method_parameters TK_CIERRAP TK_PUNTOCOMMA
+    ;
+
+method_parameters: method_parameters TK_COMMA method_parameter
+    | method_parameter
+    ;
+
+method_parameter: primary_expression
+    ;
 
 if_stmt: TK_IF TK_ABREP expression TK_CIERRAP TK_ABRELLAVE statements TK_CIERRALLAVE
     | TK_IF TK_ABREP expression TK_CIERRAP TK_ABRELLAVE statements TK_CIERRALLAVE TK_ELSE TK_ABRELLAVE statements TK_CIERRALLAVE
@@ -105,6 +117,9 @@ type_for_each: TK_OF
     ;
 
 while_stmt: TK_WHILE TK_ABREP expression TK_CIERRAP TK_ABRELLAVE statements TK_CIERRALLAVE
+    ;
+
+do_while_stmt: TK_DO TK_ABRELLAVE statements TK_CIERRALLAVE TK_WHILE TK_ABREP expression TK_CIERRAP TK_PUNTOCOMMA
     ;
 
 const_stmt: TK_CONST TK_IDENTIFICADOR TK_IGUAL assign_arrow_func_exp TK_PUNTOCOMMA
@@ -134,7 +149,11 @@ parameter_list: parameter_list TK_COMMA parameter
 
 parameter: TK_IDENTIFICADOR
 
-arrow_function: TK_ABREP arrow_parameters TK_CIERRAP TK_DOSPUNTOS type TK_ARROWFUNC TK_ABRELLAVE statements TK_CIERRALLAVE
+arrow_function: TK_ABREP arrow_parameters TK_CIERRAP TK_DOSPUNTOS type_arrow_func TK_ARROWFUNC TK_ABRELLAVE statements TK_CIERRALLAVE
+    ;
+
+type_arrow_func: type
+    | TK_VOID
     ;
 
 arrow_parameters: arrow_parameters TK_COMMA arrow_parameter
@@ -178,6 +197,7 @@ unary_expression: TK_MASMAS unary_expression
 multiplicative_expression: multiplicative_expression TK_ASTERISCO unary_expression 
       | multiplicative_expression TK_PLECA unary_expression
       | multiplicative_expression TK_PORCENTAJE unary_expression
+      | multiplicative_expression TK_UP unary_expression
       | unary_expression 
       ;
 
@@ -212,7 +232,9 @@ assignment_operator: TK_IGUAL
                    | TK_ASTERISCOIGUAL
                    | TK_PLECAIGUAL
                    | TK_PORCENTAJEIGUAL
-                   | TK_UPIGUAL 
+                   | TK_UPIGUAL
+                   | TK_ORIGUAL
+                   | TK_YIGUAL 
                    ;
 
 expression: assignment_expression 

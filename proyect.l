@@ -75,7 +75,6 @@ IDENTIFICADOR [A-Za-z][A-Za-z0-9]*
 "/=" {return TK_PLECAIGUAL;}
 
 "=" {return TK_IGUAL;}
-":=" {return TK_DOSPUNTOSIGUAL;}
 "," {return TK_COMMA;}
 ";" {return TK_PUNTOCOMMA;}
 "%" {return TK_PORCENTAJE;}
