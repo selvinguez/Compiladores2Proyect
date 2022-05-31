@@ -102,10 +102,22 @@ method_parameters: method_parameters TK_COMMA method_parameter
     ;
 
 method_parameter: primary_expression
+    | %empty
     ;
 
-if_stmt: TK_IF TK_ABREP expression TK_CIERRAP TK_ABRELLAVE statements TK_CIERRALLAVE
-    | TK_IF TK_ABREP expression TK_CIERRAP TK_ABRELLAVE statements TK_CIERRALLAVE TK_ELSE TK_ABRELLAVE statements TK_CIERRALLAVE
+if_stmt: TK_IF TK_ABREP expression TK_CIERRAP TK_ABRELLAVE statements TK_CIERRALLAVE elifs elseF
+    | TK_IF TK_ABREP expression TK_CIERRAP TK_ABRELLAVE statements TK_CIERRALLAVE elseF
+    ;
+
+elseF: TK_ELSE TK_ABRELLAVE statements TK_CIERRALLAVE
+    | %empty
+    ;
+
+elifs : elifs elif
+    | elif
+    ;
+
+elif: TK_ELSE TK_IF TK_ABREP expression TK_CIERRAP TK_ABRELLAVE statements TK_CIERRALLAVE
     ;
 
 for_stmt: TK_FOR TK_ABREP decl_assign_stmt expression TK_PUNTOCOMMA unary_expression TK_CIERRAP TK_ABRELLAVE statements TK_CIERRALLAVE
@@ -152,7 +164,7 @@ parameter: TK_IDENTIFICADOR
 arrow_function: TK_ABREP arrow_parameters TK_CIERRAP TK_DOSPUNTOS type_arrow_func TK_ARROWFUNC TK_ABRELLAVE statements TK_CIERRALLAVE
     ;
 
-type_arrow_func: type
+type_arrow_func: type array_brackets
     | TK_VOID
     ;
 
@@ -160,7 +172,8 @@ arrow_parameters: arrow_parameters TK_COMMA arrow_parameter
     | arrow_parameter
     ;
 
-arrow_parameter: TK_IDENTIFICADOR TK_DOSPUNTOS type
+arrow_parameter: TK_IDENTIFICADOR TK_DOSPUNTOS type array_brackets
+    ;
 
 primary_expression: TK_ABREP expression TK_CIERRAP 
     | TK_IDENTIFICADOR
@@ -168,11 +181,12 @@ primary_expression: TK_ABREP expression TK_CIERRAP
     | TK_LIT_STRING
     | TK_TRUE
     | TK_FALSE 
+    | array_type 
     ;
 
 assignment_expression: unary_expression assignment_operator assignment_expression TK_PUNTOCOMMA
                      | logical_or_expression
-                     | array_type 
+                    
                      ;
 
 postfix_expression: primary_expression 

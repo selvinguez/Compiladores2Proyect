@@ -1,114 +1,34 @@
-import { StringValidator } from "./StringValidator";
-
-var arr:number[] = new Array(4);
-arr.push(10);
-arr.push("hola");
-var x:number;
-var y:number[];
-var nums:number[] = [1,2,3,3];
-var nums = [1, 2, 3, 3];
-let a = 23;
-let b = true;
-var c = 'check';
-
-if(x<20 && x>20){
-  continue;
-  var n:boolean;
-  var j:number = 10;
-  n = true;
-}else{
-  break;
-}
-for(var n:number = 0; n <10;n++){
-  break;
-}
-var index:number;
-index = 0;
-
-while (index < 9) {
-
-    index = index + 1;
-
-    if (index / 2){
-        continue;
+const bubbleSort = (arr: number[]): number[] => {
+    const len = 4;
+ 
+    for (let i = 0; i < len; i++) {
+        for (let j = 0; j < len; j++) {
+            if (arr[j] > arr[j + 1]) {
+             //  [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]; 
+            }
         }
-
-    console.log(index);
-}
-for(var val of arr){
-  console.log(val);
-}
-for(var val in arr){
-  console.log(val);
-}
-const suma = 10;
-function add(x, y) {
-  return x + y;
-}
-let sum = (x: number, y: number): number => {
-    return x + y;
+    }
+ 
+    return arr;
 };
+ 
+bubbleSort([5, 3, 1, 4, 6]);
 
-
-const calculateValue = (x: number): number => {
-if (x < 1) {
-return 0;
+if(x%2 == 0){
+  console.log("x is even");
 }
-let a =0;
-let b= 1;
-for (let i= 1; i< x; ++i) {
-const c = a +b;
-a=bj;
-b=c;
-
+else{
+  console.log("x is odd");
 }
-
-return b;
-};
-
-
-for (let n= 0; n< b; ++n) {
-const value = calculateValue(n);
-console.log("£(" + n + ")=" + value);
+if (x > y) 
+{
+    console.log('x is greater than y.');
+} 
+else if (x < y)
+{
+    console.log('x is less than y.'); //This will be executed
 }
-
-var numl:number = 10;
-var num2:number = 2;
-var res:number = 0;
-
-
-res = numl + num2;
-console.log("Sum: "+res);
-
-res = numl - num2;
-console.log("Difference: "+res);
-
-res = numl-num2;
-console.log("Product: — "+res);
-
-res = num1/num2;
-console.log("Quotient: — "+res);
-
-res = numi%num2;
-console.log("Remainder: — "+res);
-
-numd++
-console.log("Value of numl after increment "+num1);
-
-num2--
-console.log("Value of num2 after decrement "+num2);
-
-console.log(arr[index]);
-
-var a = 10;
-do {
-  a++
-  console.log(a);
+else if (x == y) 
+{
+    console.log('x is equal to y');
 }
-while (a<10);
-
-let sum = (x: number, y: number): void => {
-    console.log(x+y);
-};
-
-sum(4,5);

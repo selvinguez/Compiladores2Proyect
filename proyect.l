@@ -89,11 +89,11 @@ IDENTIFICADOR [A-Za-z][A-Za-z0-9]*
 
 . {printf("Invalid character %c\n",*yytext);}
 
-<comment>"*/" {printf("Comentario encontrado %s\n",yytext); BEGIN(INITIAL);}
+<comment>"*/" {BEGIN(INITIAL);}
 <comment>.|\n {/* nada*/}
 <comment><<EOF>> {printf("incomplete comment, line %d\n",yylineno);}
 
-<comment2>"\n" {printf("Comentario encontrado %s",yytext); BEGIN(INITIAL);}
+<comment2>"\n" { BEGIN(INITIAL);}
 <comment2>. {/* nada*/}
 <comment2><<EOF>> {printf("incomplete comment, line %d\n",yylineno);}
 %%
