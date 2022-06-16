@@ -1,3 +1,6 @@
+%code requires{
+    #include "ast.h"
+}
 %{
     #include <cstdio>
     using namespace std;
@@ -14,6 +17,9 @@
     const char* string_t;
     int int_t;
     float float_t;
+     Expr * expr_t;
+     ArgumentList * argument_list_t;
+     Statement * statement_t;
 }
 
 %token TK_NUMBER TK_BOOLEAN TK_STRING TK_ARRAY TK_BREAK
@@ -24,6 +30,13 @@
 %token TK_ASTERISCOIGUAL TK_UPIGUAL TK_MAYOR TK_MAYORIGUAL TK_PLECA TK_PLECAIGUAL  TK_PUNTO TK_PUSH
 %token TK_MASMAS TK_IGUAL TK_COMMA TK_PUNTOCOMMA TK_PORCENTAJE TK_PORCENTAJEIGUAL TK_MENOSMENOS
 %token TK_EXCLAMACION TK_LIT_STRING TK_DOSPUNTOS TK_IMPORT TK_FROM TK_PRINT TK_FUNCTION TK_ARROWFUNC TK_NEW
+
+%type<expr_t> assignment_expression logical_or_expression logical_and_expression
+%type<expr_t>  equality_expression relational_expression additive_expression multiplicative_expression
+%type<expr_t> unary_expression postfix_expression primary_expression constant
+%type<argument_list_t> argument_expression_list
+%type<int_t> assignment_operator
+
 
 %%
 
@@ -176,12 +189,12 @@ arrow_parameter: TK_IDENTIFICADOR TK_DOSPUNTOS type array_brackets
     ;
 
 primary_expression: TK_ABREP expression TK_CIERRAP 
-    | TK_IDENTIFICADOR
-    | constant 
-    | TK_LIT_STRING
-    | TK_TRUE
-    | TK_FALSE 
-    | array_type 
+    | TK_IDENTIFICADOR { $$ = new IdExpr($1, yylineno); }
+    | constant { $$ = $1; }
+    | TK_LIT_STRING {$$ = new StringExpr($1, yylineno);}
+    | TK_TRUE  {$$ = new BoleanExpr($1, yylineno);}
+    | TK_FALSE {$$ = new BoleanExpr($1, yylineno);}
+    | array_type {$$ = new ArrayExpr($1, yylineno);}
     ;
 
 assignment_expression: unary_expression assignment_operator assignment_expression TK_PUNTOCOMMA
@@ -189,23 +202,23 @@ assignment_expression: unary_expression assignment_operator assignment_expressio
                     
                      ;
 
-postfix_expression: primary_expression 
-                    | postfix_expression TK_ABREC expression TK_CIERRAC
-                    | postfix_expression TK_ABREP TK_CIERRAP 
-                    | postfix_expression TK_ABREP argument_expression_list TK_CIERRAP 
+postfix_expression: primary_expression { $$ = $1; }
+                    | postfix_expression TK_ABREC expression TK_CIERRAC {$$ = new ArrayExpr((IdExpr *)$1, $3, yylineno );}
+                    | postfix_expression TK_ABREP TK_CIERRAP { $$ = new MethodInvocationExpr((IdExpr*)$1, *(new ArgumentList), yylineno); }
+                    | postfix_expression TK_ABREP argument_expression_list TK_CIERRAP { $$ = new MethodInvocationExpr((IdExpr*)$1, *$3, yylineno);  }
                     | postfix_expression TK_MASMAS 
                     | postfix_expression TK_MENOSMENOS 
                     ;
 
 
-argument_expression_list: argument_expression_list TK_COMMA assignment_expression 
-                        | assignment_expression 
+argument_expression_list: argument_expression_list TK_COMMA assignment_expression  { $$ = $1; $$->push_back($3);  }
+                        | assignment_expression { $$ = new ArgumentList;  $$->push_back($1); }
                         ;
 
 unary_expression: TK_MASMAS unary_expression 
                 | TK_MENOSMENOS unary_expression
                 | TK_EXCLAMACION unary_expression  
-                | postfix_expression 
+                | postfix_expression { $$ = $1; }
                 ;
 
 multiplicative_expression: multiplicative_expression TK_ASTERISCO unary_expression 
@@ -240,8 +253,8 @@ logical_and_expression: logical_and_expression TK_AND equality_expression
                       | equality_expression 
                       ;
 
-assignment_operator: TK_IGUAL 
-                   | TK_SUMAIGUAL 
+assignment_operator: TK_IGUAL { $$ = EQUAL; }
+                   | TK_SUMAIGUAL { $$ = SUMAEQUAL; }
                    | TK_RESTAIGUAL
                    | TK_ASTERISCOIGUAL
                    | TK_PLECAIGUAL
@@ -254,6 +267,6 @@ assignment_operator: TK_IGUAL
 expression: assignment_expression 
           ;
 
-constant: TK_LIT_NUMBER
+constant: TK_LIT_NUMBER { $$ = new IntExpr($1, yylineno);}
         ;
 %%

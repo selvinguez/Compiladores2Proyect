@@ -1,10 +1,11 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/selvinguez/Documentos/Proyecto'
-bison --defines=tokens.h -W -o proyect_parser.cpp proyect.y
+g++ -std=c++11 -g -c -o ast.o ast.cpp
+bison --defines=tokens.h -Wcounterexamples -o proyect_parser.cpp proyect.y
 g++ --std=c++11 -g -c -o proyect_parser.o proyect_parser.cpp
 flex -o proyect_lexer.cpp proyect.l
 g++ --std=c++11 -g -c -o proyect_lexer.o proyect_lexer.cpp
 g++ --std=c++11 -g -c -o main.o main.cpp
-g++ --std=c++11 -g -o proyect proyect_parser.o proyect_lexer.o main.o
+g++ --std=c++11 -g -o proyect ast.o proyect_parser.o proyect_lexer.o main.o
 make: Leaving directory '/home/selvinguez/Documentos/Proyecto'
  
