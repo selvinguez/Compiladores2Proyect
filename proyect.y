@@ -7,6 +7,10 @@
     int yylex();
     extern int yylineno;
 
+    #define EQUAL 1
+    #define SUMAEQUAL 2
+    #define RESTAEQUAL 3
+
     void yyerror(const char * s){
         fprintf(stderr, "Line %d, error: %s\n", yylineno, s);
     }
@@ -17,23 +21,27 @@
     const char* string_t;
     int int_t;
     float float_t;
+    bool bool_t;
      Expr * expr_t;
      ArgumentList * argument_list_t;
      Statement * statement_t;
 }
 
 %token TK_NUMBER TK_BOOLEAN TK_STRING TK_ARRAY TK_BREAK
-%token TK_CONST TK_DO TK_ELSE TK_FALSE TK_FOR TK_IF TK_IN TK_RETURN 
-%token TK_TRUE TK_VAR TK_VOID TK_WHILE TK_LET TK_OF TK_CONTINUE TK_LIT_NUMBER TK_ABRELLAVE TK_CIERRALLAVE
-%token TK_IDENTIFICADOR TK_ASTERISCO TK_SUMA TK_SUMAIGUAL TK_YIGUAL TK_AND TK_DOBLEIGUAL TK_OR TK_DISTINTO 
+%token TK_CONST TK_DO TK_ELSE TK_FOR TK_IF TK_IN TK_RETURN 
+%token TK_VAR TK_VOID TK_WHILE TK_LET TK_OF TK_CONTINUE TK_ABRELLAVE TK_CIERRALLAVE
+%token TK_ASTERISCO TK_SUMA TK_SUMAIGUAL TK_YIGUAL TK_AND TK_DOBLEIGUAL TK_OR TK_DISTINTO 
 %token TK_RESTA TK_ABREP TK_CIERRAP TK_RESTAIGUAL TK_ORIGUAL TK_MENOR TK_MENORIGUAL TK_ABREC TK_CIERRAC TK_UP 
 %token TK_ASTERISCOIGUAL TK_UPIGUAL TK_MAYOR TK_MAYORIGUAL TK_PLECA TK_PLECAIGUAL  TK_PUNTO TK_PUSH
 %token TK_MASMAS TK_IGUAL TK_COMMA TK_PUNTOCOMMA TK_PORCENTAJE TK_PORCENTAJEIGUAL TK_MENOSMENOS
-%token TK_EXCLAMACION TK_LIT_STRING TK_DOSPUNTOS TK_IMPORT TK_FROM TK_PRINT TK_FUNCTION TK_ARROWFUNC TK_NEW
+%token TK_EXCLAMACION TK_DOSPUNTOS TK_IMPORT TK_FROM TK_PRINT TK_FUNCTION TK_ARROWFUNC TK_NEW
+%token<string_t> TK_IDENTIFICADOR TK_LIT_STRING
+%token<int_t> TK_LIT_NUMBER
+%token<bool_t>TK_TRUE TK_FALSE
 
 %type<expr_t> assignment_expression logical_or_expression logical_and_expression
 %type<expr_t>  equality_expression relational_expression additive_expression multiplicative_expression
-%type<expr_t> unary_expression postfix_expression primary_expression constant
+%type<expr_t> unary_expression postfix_expression primary_expression constant array_type expression
 %type<argument_list_t> argument_expression_list
 %type<int_t> assignment_operator
 
@@ -194,7 +202,7 @@ primary_expression: TK_ABREP expression TK_CIERRAP
     | TK_LIT_STRING {$$ = new StringExpr($1, yylineno);}
     | TK_TRUE  {$$ = new BoleanExpr($1, yylineno);}
     | TK_FALSE {$$ = new BoleanExpr($1, yylineno);}
-    | array_type {$$ = new ArrayExpr($1, yylineno);}
+    | array_type 
     ;
 
 assignment_expression: unary_expression assignment_operator assignment_expression TK_PUNTOCOMMA
